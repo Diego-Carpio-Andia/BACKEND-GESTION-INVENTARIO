@@ -7,9 +7,9 @@ namespace Dominio.Tablas
     public class ProductoVenta
     {
         public Guid ProductoId {  get; set; }
-        public Producto producto { get; set; }
+        public Producto Producto { get; set; }
         public Guid VentaId { get; set; }
-        public Venta venta { get; set; } 
+        public Venta Venta { get; set; } 
 
     }
 }

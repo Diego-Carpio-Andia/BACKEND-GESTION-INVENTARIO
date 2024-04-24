@@ -11,7 +11,7 @@ namespace Dominio.Tablas
         public Usuario Usuario { get; set; }
         public string TipoActividad { get; set; }
         public string DescripcionActividad { get; set; }    
-        public DateTime FechaHora { get; set; }
+        public DateTime FechaCreacion { get; set; }
 
     }
 }

@@ -11,6 +11,6 @@ namespace Dominio.Tablas
         public Guid UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public ICollection<Producto> ProductoLink { get; set; }
+        public ICollection<ProductoVenta> ProductoLink { get; set; }
     }
 }

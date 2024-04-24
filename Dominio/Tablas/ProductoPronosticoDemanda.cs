@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Dominio.Tablas
 {
-    public class ProductoCompra
+    public class ProductoPronosticoDemanda
     {
         public Guid ProductoId { get; set; }
         public Producto Producto { get; set; }
-        public Guid CompraId { get; set; }
-        public Compra Compra { get; set; }
+        public Guid PronosticoDemandaId { get; set; }
+        public PronosticoDemanda PronosticoDemanda { get; set; }
     }
 }
