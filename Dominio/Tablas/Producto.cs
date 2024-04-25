@@ -7,8 +7,8 @@ namespace Dominio.Tablas
     public class Producto
     {
         public Guid Productoid { get; set; }
-        public string Nombre { get; set; }
-        public string Precio { get; set; }
+        public string NombreProducto { get; set; }
+        public decimal Precio { get; set; }
         public string Categoria { get; set; }
         public byte[] Imagen { get; set; }
         public DateTime FechaCreacion { get; set; }

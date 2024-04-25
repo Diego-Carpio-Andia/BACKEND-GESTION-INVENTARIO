@@ -1,4 +1,5 @@
 using Dominio;
+using Dominio.Tablas;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +23,16 @@ namespace Persistencia
 
             //configurar las claves primarias compuestas en una ENTIDAD llamada CursoInstructor
             modelBuilder.Entity<CursoInstructor>().HasKey(ci => new { ci.InstructorId, ci.CursoId });
+
+            //configurar las claves primarias compuestas en una ENTIDAD llamada ProductoVenta (FK Y PK) a la vez tanto ProductoId como VentaId
+            modelBuilder.Entity<ProductoVenta>().HasKey(pv => new { pv.ProductoId, pv.VentaId});
+
+            //configurar las claves primarias compuestas en una ENTIDAD llamada CursoInstructor
+            modelBuilder.Entity<ProductoCompra>().HasKey(pc => new { pc.ProductoId, pc.CompraId});
+
+            //configurar las claves primarias compuestas en una ENTIDAD llamada CursoInstructor
+            modelBuilder.Entity<ProductoPronosticoDemanda>().HasKey(pp => new { pp.ProductoId, pp.PronosticoDemandaId});
+
 
         }
         //Convertir a identidades a cada una de las clases con las mismas nombres 
