@@ -23,9 +23,9 @@ namespace Aplicacion.cursos
         {
 
             //Representacion de la instancia del entity framework
-            private readonly CursosOnlineContext _context;
+            private readonly EntityContext _context;
             private readonly IMapper _mapper;   
-            public Manejador(CursosOnlineContext context, IMapper mapper /*mapeo de DTOs con identidades*/)
+            public Manejador(EntityContext context, IMapper mapper /*mapeo de DTOs con identidades*/)
             {
                 this._context = context;
                 _mapper = mapper;

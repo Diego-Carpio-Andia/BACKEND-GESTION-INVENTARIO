@@ -45,7 +45,7 @@ namespace WebApi
             //Vamos a agregar el nuevo servicio para que me abstraiga data de la base de datos
             //opt => tipo de conexion que va atener
             //CursosonlineContext=> representacion de mi base de datos con entity framework
-            services.AddDbContext<CursosOnlineContext>(opt =>
+            services.AddDbContext<EntityContext>(opt =>
             {
                 //Cadena de conexion el string lo vamos a poner en appsettings.json
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
@@ -80,7 +80,7 @@ namespace WebApi
             identityBuilder.AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<Usuario, IdentityRole>>();
 
             //vamos a agregar la clase que instancia del entitydframwork que viene a ser cursosOnlineContext
-            identityBuilder.AddEntityFrameworkStores<CursosOnlineContext>();
+            identityBuilder.AddEntityFrameworkStores<EntityContext>();
             //configuracion para el Sign para el usuario
             identityBuilder.AddSignInManager<SignInManager<Usuario>>();
             //lo que falta para el usuario

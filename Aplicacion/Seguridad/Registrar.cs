@@ -37,12 +37,12 @@ namespace Aplicacion.Seguridad
         //Aparte del ejecutar, va a devolver un tipo UsuarioDATA
         public class Manejador : IRequestHandler<Ejecutar, UsuarioData>
         {
-            private readonly CursosOnlineContext _context;
+            private readonly EntityContext _context;
             private readonly UserManager<Usuario> _userManager;
             private readonly IJWTGenerador _jwtGenerador;
 
             //se requiere registra la data del usuario, seguridad y token
-            public Manejador(CursosOnlineContext context, UserManager<Usuario> userManager, IJWTGenerador jwtGenerador) {
+            public Manejador(EntityContext context, UserManager<Usuario> userManager, IJWTGenerador jwtGenerador) {
                 _context = context;
                 _userManager = userManager;
                 _jwtGenerador = jwtGenerador;

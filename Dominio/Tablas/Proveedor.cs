@@ -10,5 +10,7 @@ namespace Dominio.Tablas
         public string RazonSocial { get; set; }
         public string RUC { get; set; }
         public string NumeroCelular { get; set; }
+        public Guid UsuarioId {  get; set; }
+        public Usuario Usuario { get; set; }
     }
 }

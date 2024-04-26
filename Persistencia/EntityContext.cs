@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore;
 //Ahora vamos a convertir a entidades a las clases 
 namespace Persistencia
 {
-    public class CursosOnlineContext : IdentityDbContext<Usuario> //DbContext antiguo, usaremos indetityDbContext para migrar todas las tablas necesarias para usuarios
+    public class EntityContext : IdentityDbContext<Usuario> //DbContext antiguo, usaremos indetityDbContext para migrar todas las tablas necesarias para usuarios
     {
         //Contructor representacion de la base de datos
-        public CursosOnlineContext(DbContextOptions options) : base(options)
+        public EntityContext(DbContextOptions options) : base(options)
         {
 
         }
@@ -42,5 +42,18 @@ namespace Persistencia
         public DbSet<Instructor> Instructor { get; set; }
         public DbSet<CursoInstructor> CursoInstructor { get; set; }
         public DbSet<Documento> Documento { get; set; }
+
+        //Convertimos a entidades cada una de las clases con los mismos nombres
+        public DbSet<Actividad> Actividad { get; set; }
+        public DbSet<Compra> Compra { get; set; }
+        public DbSet<Favoritos> Favoritos {  get; set; }
+        public DbSet<Notificacion> Notificacion {  get; set; }
+        public DbSet<Producto> Producto { get; set; }
+        public DbSet<ProductoCompra> ProductoCompra { get; set; }
+        public DbSet<ProductoPronosticoDemanda> ProductoPronosticoDemanda { get; set; }
+        public DbSet<ProductoVenta> ProductoVenta { get; set; } 
+        public DbSet<PronosticoDemanda> PronosticoDemanda { get; set; }
+        public DbSet<Proveedor> Proveedor { get; set; }
+        public DbSet<Venta> Venta { get; set; } 
     }
 }

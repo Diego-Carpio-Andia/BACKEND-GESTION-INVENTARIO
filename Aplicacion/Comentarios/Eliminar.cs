@@ -19,9 +19,9 @@ namespace Aplicacion.Comentarios
         }
         public class Manejador : IRequestHandler<Ejecuta>
         {
-            CursosOnlineContext _context;
+            EntityContext _context;
 
-            public Manejador(CursosOnlineContext context)
+            public Manejador(EntityContext context)
             {
                 _context = context;
             }

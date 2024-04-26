@@ -25,9 +25,9 @@ namespace Aplicacion.cursos
         public class Manejador : IRequestHandler<CursoUnico, CursoDto>
         {
             //Representacion de la instancia del entity framework
-            private readonly CursosOnlineContext _context;
+            private readonly EntityContext _context;
             private readonly IMapper _mapper;
-            public Manejador(CursosOnlineContext context, IMapper mapper)
+            public Manejador(EntityContext context, IMapper mapper)
             {
                 this._context = context;
                 this._mapper = mapper;

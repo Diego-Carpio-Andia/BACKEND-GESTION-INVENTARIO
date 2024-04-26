@@ -9,7 +9,7 @@ using Persistencia;
 
 namespace Persistencia.Migrations
 {
-    [DbContext(typeof(CursosOnlineContext))]
+    [DbContext(typeof(EntityContext))]
     [Migration("20240416015951_AgregarColumnasFecha")]
     partial class AgregarColumnasFecha
     {

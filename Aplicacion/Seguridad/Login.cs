@@ -39,10 +39,10 @@ namespace Aplicacion.Seguridad
             //variable que represente la interfaz del token
             private readonly IJWTGenerador _jwtgenerador;
 
-            private readonly CursosOnlineContext _context;
+            private readonly EntityContext _context;
 
 
-            public Manejador(UserManager<Usuario> userManager, SignInManager<Usuario> singInManager, IJWTGenerador jwtgenerador, CursosOnlineContext context) {                       
+            public Manejador(UserManager<Usuario> userManager, SignInManager<Usuario> singInManager, IJWTGenerador jwtgenerador, EntityContext context) {                       
                 _userManager = userManager;
                 _signInManager = singInManager;
                 _jwtgenerador = jwtgenerador;

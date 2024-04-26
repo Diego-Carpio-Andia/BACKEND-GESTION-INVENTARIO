@@ -27,7 +27,7 @@ namespace WebApi
                 //validamos que se ejecute correctamente este procedimiento
                 try
                 {
-                    var context = services.GetRequiredService<CursosOnlineContext>();
+                    var context = services.GetRequiredService<EntityContext>();
                     //ejecutamos la migracion
                     context.Database.Migrate();
                     //context y userManager son necesario para la insercion de data al usuario

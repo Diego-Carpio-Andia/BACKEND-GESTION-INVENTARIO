@@ -47,8 +47,8 @@ namespace Aplicacion.cursos
         public class Manejador : IRequestHandler<AgregarPeticion>
         {
 
-            private readonly CursosOnlineContext _context;
-            public Manejador(CursosOnlineContext context)
+            private readonly EntityContext _context;
+            public Manejador(EntityContext context)
             {
                 _context = context;
             }

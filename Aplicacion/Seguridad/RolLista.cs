@@ -18,8 +18,8 @@ namespace Aplicacion.Seguridad
         {
             //representacion de los objetos de la base de datos para listar
             //context representa todos los elementos de la base de datos tambien con el coreidentitycore
-            private readonly CursosOnlineContext _context;
-            public Manejador(CursosOnlineContext context)
+            private readonly EntityContext _context;
+            public Manejador(EntityContext context)
             {
                 _context = context;
             }

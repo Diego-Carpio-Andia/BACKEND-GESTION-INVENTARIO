@@ -7,16 +7,17 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aplicacion.Compra
+namespace Aplicacion.Venta
 {
-    public class AgregarCompra
+    public class AgregarVenta
     {
         public class Ejecuta : IRequest
         {
-            public int Cantidad { get; set; }
-            public Guid UsuarioId { get; set; }
+            public int Cantidad {  get; set; }
+            public Guid UsuarioId {  get; set; }
             public List<Guid> ListaProducto { get; set; }
         }
+
         public class Manejador : IRequestHandler<Ejecuta>
         {
             private readonly EntityContext _entityContext;
@@ -24,28 +25,29 @@ namespace Aplicacion.Compra
             {
                 _entityContext = entityContext;
             }
+
             public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
-                Guid _CompraId = Guid.NewGuid();
-                var compra = new Dominio.Tablas.Compra()
+                Guid _VentaId = Guid.NewGuid();
+                var venta = new Dominio.Tablas.Venta()
                 {
-                    CompraId = _CompraId,
+                    VentaId = _VentaId,
                     Cantidad = request.Cantidad,
                     UsuarioId = request.UsuarioId,
                     FechaCreacion = DateTime.UtcNow
                 };
-                _entityContext.Compra.Add(compra);
+                _entityContext.Venta.Add(venta);
 
-                if (request.ListaProducto != null)
+                if(request.ListaProducto != null)
                 {
-                    foreach (var item in request.ListaProducto)
+                    foreach(var item in request.ListaProducto)
                     {
-                        var ProductoCompra = new ProductoCompra()
+                        var ProductoVenta = new ProductoVenta()
                         {
-                            CompraId = _CompraId,
+                            VentaId = _VentaId,
                             ProductoId = item
                         };
-                        _entityContext.ProductoCompra.Add(ProductoCompra);
+                        _entityContext.ProductoVenta.Add(ProductoVenta);
                     }
                 }
 
@@ -55,7 +57,7 @@ namespace Aplicacion.Compra
                 {
                     return Unit.Value;
                 }
-                throw new Exception("No se pudo insertar la compra");
+                throw new Exception("No se pudo insertar la venta");
             }
         }
     }

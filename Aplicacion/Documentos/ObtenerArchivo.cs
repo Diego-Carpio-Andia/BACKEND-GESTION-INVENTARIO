@@ -19,8 +19,8 @@ namespace Aplicacion.Documentos
         }
         public class Manejador : IRequestHandler<Ejecuta, ArchivoGenerico>
         {
-            private readonly CursosOnlineContext _context;
-            public Manejador(CursosOnlineContext context)
+            private readonly EntityContext _context;
+            public Manejador(EntityContext context)
             {
                 _context = context;
             }

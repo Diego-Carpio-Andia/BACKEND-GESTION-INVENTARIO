@@ -23,10 +23,10 @@ namespace Aplicacion.Seguridad
             UserManager<Usuario> _userManager;
             IJWTGenerador _jwtGenerador;
             IUsuarioSesion _usuarioSesion;
-            private readonly CursosOnlineContext _cursosOnlineContext;
+            private readonly EntityContext _cursosOnlineContext;
 
             //IusuarioSesion => devuelve el username
-            public Manejador(UserManager<Usuario> userManager, IJWTGenerador jwtGenerador, IUsuarioSesion usuarioSesion, CursosOnlineContext context) { 
+            public Manejador(UserManager<Usuario> userManager, IJWTGenerador jwtGenerador, IUsuarioSesion usuarioSesion, EntityContext context) { 
                 _jwtGenerador = jwtGenerador;
                 _usuarioSesion = usuarioSesion;
                 _userManager = userManager;

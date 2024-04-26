@@ -33,14 +33,14 @@ namespace Aplicacion.Seguridad
         public class Manejador : IRequestHandler<Ejecuta, UsuarioData>
         {
             //representacion de la persistencia
-            private readonly CursosOnlineContext _context;
+            private readonly EntityContext _context;
             //representacion del objeto userManager
             private readonly UserManager<Usuario> _userManager;
             //representacion del Token creacion denuevo del token
             private readonly IJWTGenerador _jwtGenerador;
             //objeto para hashear el password
             public readonly IPasswordHasher<Usuario> _passwordHasher;
-            public Manejador(CursosOnlineContext context, UserManager<Usuario> userManager, IJWTGenerador jwtGenerador, IPasswordHasher<Usuario> passwordHasher)
+            public Manejador(EntityContext context, UserManager<Usuario> userManager, IJWTGenerador jwtGenerador, IPasswordHasher<Usuario> passwordHasher)
             {
                 _context = context;
                 _userManager = userManager;

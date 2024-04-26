@@ -9,7 +9,7 @@ using Persistencia;
 
 namespace Persistencia.Migrations
 {
-    [DbContext(typeof(CursosOnlineContext))]
+    [DbContext(typeof(EntityContext))]
     [Migration("20240425193902_CREACIONPROYECTO")]
     partial class CREACIONPROYECTO
     {

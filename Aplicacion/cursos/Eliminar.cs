@@ -21,10 +21,10 @@ namespace Aplicacion.cursos
 
         public class Manejador : IRequestHandler<Ejecuta>
         {
-            private readonly CursosOnlineContext _context;
+            private readonly EntityContext _context;
 
             //inyectado
-            public Manejador(CursosOnlineContext context)
+            public Manejador(EntityContext context)
             {
                 _context = context;
             }
