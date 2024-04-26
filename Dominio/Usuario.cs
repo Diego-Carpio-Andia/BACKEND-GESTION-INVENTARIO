@@ -16,5 +16,6 @@ namespace Dominio
         public ICollection<Venta> ListaVenta { get; set; }
         public ICollection<Actividad> ListaActividad { get; set; }
         public ICollection<Proveedor> ListaProveedor { get; set; }
+        public ICollection<Favoritos> ListaFavoritos {  get; set; }
     }
 }

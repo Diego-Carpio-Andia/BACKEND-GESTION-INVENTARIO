@@ -9,5 +9,6 @@ namespace Dominio.Tablas
         public Guid FavoritosId { get; set; }
         public Guid ProductoId { get; set; }
         public Producto Producto { get; set; }
+        public DateTime FechaCreacion { get; set; }
     }
 }
