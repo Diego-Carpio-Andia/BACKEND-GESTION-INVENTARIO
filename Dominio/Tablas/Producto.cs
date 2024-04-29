@@ -12,8 +12,10 @@ namespace Dominio.Tablas
         [Column(TypeName = "decimal(18,4)")]
         public decimal Precio { get; set; }        
         public string Categoria { get; set; }
+        public int CantidadInventario { get; set; }
         public byte[] Imagen { get; set; }
         public DateTime FechaCreacion { get; set; }
+        //SOLO LOS LINK tiene esa modificacion para agregar 
         public ICollection<ProductoCompra> CompraLink { get; set; }
         public ICollection<ProductoVenta> VentaLink { get; set; }
         public ICollection<ProductoPronosticoDemanda> PronosticoDemandaLink {  get; set; }

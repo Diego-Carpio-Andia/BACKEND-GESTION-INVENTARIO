@@ -17,6 +17,7 @@ namespace Aplicacion.Compra
             public string Nombre { get; set; }
             public decimal Precio { get; set; }
             public string Categoria { get; set; }
+            public int Cantidad { get; set; }
             public ICollection<Guid> ListaVenta { get; set; }
             public ICollection<Guid> ListaCompra {  get; set; }
             public ICollection<Guid> ListaPronosticoDemanda { get; set; }
@@ -39,6 +40,7 @@ namespace Aplicacion.Compra
                     Nombre = request.Nombre,
                     Precio = request.Precio,
                     Categoria = request.Categoria,
+                    CantidadInventario = request.Cantidad,
                     FechaCreacion = DateTime.UtcNow
                 };
 

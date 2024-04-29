@@ -19,6 +19,7 @@ namespace Aplicacion.Producto
             public string Nombre { get; set; }
             public decimal Precio { get; set; }
             public string Categoria { get; set; }
+            public int CantidadInventario {  get; set; }
             public ICollection<Guid> ListaVenta { get; set; }
             public ICollection<Guid> ListaCompra { get; set; }
             public ICollection<Guid> ListaPronosticoDemanda { get; set; }
@@ -39,9 +40,11 @@ namespace Aplicacion.Producto
                     throw new ManejadorExepcion(System.Net.HttpStatusCode.NotFound, new { message = "No se encontro el Producto"});
                 }
 
+                
                 ProductoEncontrado.Nombre = request.Nombre;
                 ProductoEncontrado.Precio = request.Precio;
                 ProductoEncontrado.Categoria = request.Categoria;
+                ProductoEncontrado.CantidadInventario = request.CantidadInventario;
 
                 if(request.ListaVenta !=null)
                 {

@@ -46,6 +46,11 @@ namespace Aplicacion.Compra
                             ProductoId = item
                         };
                         _entityContext.ProductoCompra.Add(ProductoCompra);
+
+                        _entityContext.ProductoCompra.Add(ProductoCompra);
+                        //CAMBIAMOS LA CANTIDAD en producto restandole
+                        var buscado = await _entityContext.Producto.FindAsync(item);
+                        buscado.CantidadInventario += request.Cantidad;
                     }
                 }
 

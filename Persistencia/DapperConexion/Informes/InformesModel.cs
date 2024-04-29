@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Aplicacion.Compra
+namespace Persistencia.DapperConexion.Informes
 {
-    public class PaginacionCurso
+    public class InformesModel
     {
-
     }
 }
