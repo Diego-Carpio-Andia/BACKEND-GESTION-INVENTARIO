@@ -13,7 +13,6 @@ namespace Aplicacion.Venta
     {
         public class Ejecuta : IRequest
         {
-            //CAMBIAR A LISTA DE CANTIDADES
             public int Cantidad {  get; set; }
             public Guid UsuarioId {  get; set; }
             public List<Guid> ListaProducto { get; set; }
