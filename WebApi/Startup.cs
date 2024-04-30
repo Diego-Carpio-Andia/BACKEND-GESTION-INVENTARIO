@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Persistencia;
-using Aplicacion.cursos;
+
 using MediatR;
 using WebApi.Middleware;
 using Dominio;
@@ -22,7 +22,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using AutoMapper;
 using Persistencia.DapperConexion;
-using Persistencia.DapperConexion.Instructor;
+
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using Persistencia.DapperConexion.Paginacion;
@@ -58,8 +58,9 @@ namespace WebApi
             services.Configure<ConexionConfiguracion>(Configuration.GetSection("ConnectionStrings"));
 
 
-            //añadimos el mediador del controller cursos
-            services.AddMediatR(typeof(Consulta.Manejador).Assembly);
+            //añadimos el mediador del controller cursos para que
+            //Acepte los DTOs
+            //services.AddMediatR(typeof(Consulta.Manejador).Assembly);
 
             //vamos a agregar fluent validation .AddFluentValidation() ademas de indicar la clase en la cual clase se requiere validar
             services.AddControllers(opt => {
@@ -113,14 +114,13 @@ namespace WebApi
 
             //agregamos el servicio para la interfaz de IUsuarioSesion, para que funcione la clase
             services.AddScoped<IUsuarioSesion, UsuarioSesion>();
-            //inyectamos la interfaz automapper para el correcto funcionanmiento del mapeado de identidades 
-            services.AddAutoMapper(typeof(Consulta.Manejador));
+            //inyectamos la interfaz automapper para el correcto funcionanmiento del mapeado de identidades
+            //OJO QUE SOLO ES EN CURSO
+            // services.AddAutoMapper(typeof(Consulta.Manejador));
 
 
             //vamos a arrancar el IFactoryConnection para instancear la conexion a la base de datos 
-            services.AddTransient<IFactoryConnection, FactoryConnection>();
-            //interfaz y su implementacion necesario
-            services.AddScoped<IInstructor, InstructorRepository>();
+            services.AddTransient<IFactoryConnection, FactoryConnection>();            
             //instanceamos la paginacion
             services.AddScoped<IPaginacion, PaginacionRepository>();
 
@@ -130,7 +130,7 @@ namespace WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "services para amntenimiento de cursos",
+                    Title = "services para el mantenimiento de inventario y ventas",
                     Version = "v1",
                 });
                 c.CustomSchemaIds(c => c.FullName);
@@ -164,7 +164,7 @@ namespace WebApi
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "cursos online v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Inventario v1");
             });
         }
     }

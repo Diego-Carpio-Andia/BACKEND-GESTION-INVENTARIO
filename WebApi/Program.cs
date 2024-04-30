@@ -33,7 +33,7 @@ namespace WebApi
                     //context y userManager son necesario para la insercion de data al usuario
                     var userManager = services.GetRequiredService<UserManager<Usuario>>();
                     //.Wait() => usar await que te espere
-                    DataPrueba.InsertarData(context, userManager).Wait();
+                    //DataPrueba.InsertarData(context, userManager).Wait();
 
                 }
                 catch (Exception ex)

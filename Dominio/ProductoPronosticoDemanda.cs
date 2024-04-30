@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dominio.Tablas
+namespace Dominio
 {
     public class ProductoPronosticoDemanda
     {

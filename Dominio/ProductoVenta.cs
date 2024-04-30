@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dominio.Tablas
+namespace Dominio
 {
     public class ProductoVenta
     {
-        public Guid ProductoId {  get; set; }
+        public Guid ProductoId { get; set; }
         public Producto Producto { get; set; }
         public Guid VentaId { get; set; }
-        public Venta Venta { get; set; } 
+        public Venta Venta { get; set; }
 
     }
 }

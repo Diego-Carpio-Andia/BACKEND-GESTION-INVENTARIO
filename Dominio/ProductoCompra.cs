@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dominio.Tablas
+namespace Dominio
 {
-    public class Favoritos
+    public class ProductoCompra
     {
-        public Guid FavoritosId { get; set; }
         public Guid ProductoId { get; set; }
         public Producto Producto { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public Guid CompraId { get; set; }
+        public Compra Compra { get; set; }
     }
 }

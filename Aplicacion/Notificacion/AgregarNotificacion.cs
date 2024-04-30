@@ -1,4 +1,4 @@
-﻿using Dominio.Tablas;
+﻿
 using MediatR;
 using Persistencia;
 using System;
@@ -29,7 +29,7 @@ namespace Aplicacion.Notificacion
             {
                 Guid Notificacion = Guid.NewGuid();
 
-                var nuevaNotificacion = new Dominio.Tablas.Notificacion()
+                var nuevaNotificacion = new Dominio.Notificacion()
                 {
                     NotificacionId = Notificacion,
                     PronosticoDemandaId = request.PronosticoDemandaId,

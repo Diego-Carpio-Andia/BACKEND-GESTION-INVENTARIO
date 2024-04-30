@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Dominio.Tablas
+namespace Dominio
 {
     public class Producto
     {
         public Guid Productoid { get; set; }
         public string Nombre { get; set; }
         [Column(TypeName = "decimal(18,4)")]
-        public decimal Precio { get; set; }        
+        public decimal Precio { get; set; }
         public string Categoria { get; set; }
         public int CantidadInventario { get; set; }
         public byte[] Imagen { get; set; }
@@ -18,7 +18,7 @@ namespace Dominio.Tablas
         //SOLO LOS LINK tiene esa modificacion para agregar 
         public ICollection<ProductoCompra> CompraLink { get; set; }
         public ICollection<ProductoVenta> VentaLink { get; set; }
-        public ICollection<ProductoPronosticoDemanda> PronosticoDemandaLink {  get; set; }
+        public ICollection<ProductoPronosticoDemanda> PronosticoDemandaLink { get; set; }
         public Favoritos Favoritos { get; set; }
     }
 }

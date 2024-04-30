@@ -1,5 +1,4 @@
 ﻿using Aplicacion.ManejadorError;
-using Dominio.Tablas;
 using MediatR;
 using Persistencia;
 using System;
@@ -58,7 +57,7 @@ namespace Aplicacion.Producto
                         //AGREGAR
                         foreach(var id in request.ListaVenta)
                         {
-                            var nuevaVenta = new ProductoVenta()
+                            var nuevaVenta = new Dominio.ProductoVenta()
                             {
                                 VentaId = id,
                                 ProductoId = request.id
@@ -79,7 +78,7 @@ namespace Aplicacion.Producto
                         //AGREGAR
                         foreach(var id in request.ListaCompra)
                         {
-                            var nuevaCompra = new ProductoCompra()
+                            var nuevaCompra = new Dominio.ProductoCompra()
                             {
                                 CompraId = id,
                                 ProductoId = request.id
@@ -100,7 +99,7 @@ namespace Aplicacion.Producto
                         //AGREGAR
                         foreach(var id in request.ListaPronosticoDemanda)
                         {
-                            var NuevoPronosticoDemanda = new ProductoPronosticoDemanda()
+                            var NuevoPronosticoDemanda = new Dominio.ProductoPronosticoDemanda()
                             {
                                 PronosticoDemandaId = id,
                                 ProductoId = request.id

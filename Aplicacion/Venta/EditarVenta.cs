@@ -1,5 +1,4 @@
 ﻿using Aplicacion.ManejadorError;
-using Dominio.Tablas;
 using MediatR;
 using Persistencia;
 using System;
@@ -16,8 +15,8 @@ namespace Aplicacion.Venta
     {
         public class Ejecutar : IRequest
         {
-            public Guid VentaId { get; set; }
             public int Cantidad { get; set; }
+            public Guid VentaId { get; set; }
             public List<Guid> ListaProducto { get; set; }
         }
 
@@ -50,7 +49,7 @@ namespace Aplicacion.Venta
                         //AGREGAR
                         foreach (var id in request.ListaProducto)
                         {
-                            var nuevoProductoVenta = new ProductoVenta()
+                            var nuevoProductoVenta = new Dominio.ProductoVenta()
                             {
                                 VentaId = request.VentaId,
                                 ProductoId = id,

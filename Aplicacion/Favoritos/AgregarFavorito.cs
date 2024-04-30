@@ -26,7 +26,7 @@ namespace Aplicacion.Favoritos
             public async Task<Unit> Handle(Ejecutar request, CancellationToken cancellationToken)
             {
                 Guid FavoritoId = Guid.NewGuid();
-                var nuevoFavorito = new Dominio.Tablas.Favoritos()
+                var nuevoFavorito = new Dominio.Favoritos()
                 {
                     FavoritosId = FavoritoId,
                     ProductoId = request.ProductoId,

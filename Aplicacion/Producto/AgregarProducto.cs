@@ -1,5 +1,4 @@
-﻿using Dominio.Tablas;
-using iTextSharp.text.xml.simpleparser;
+﻿using iTextSharp.text.xml.simpleparser;
 using MediatR;
 using Persistencia;
 using System;
@@ -34,7 +33,7 @@ namespace Aplicacion.Compra
             public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
                 Guid productoId = Guid.NewGuid();
-                var producto = new Dominio.Tablas.Producto()
+                var producto = new Dominio.Producto()
                 {
                     Productoid = productoId,
                     Nombre = request.Nombre,
@@ -50,7 +49,7 @@ namespace Aplicacion.Compra
                 {
                     foreach (var id in request.ListaVenta)
                     {
-                        var productoVenta = new ProductoVenta()
+                        var productoVenta = new Dominio.ProductoVenta()
                         {
                             ProductoId = productoId,
                             VentaId = id,
@@ -62,7 +61,7 @@ namespace Aplicacion.Compra
                 {
                     foreach (var id in request.ListaCompra)
                     {
-                        var productoCompra = new ProductoCompra()
+                        var productoCompra = new Dominio.ProductoCompra()
                         {
                             ProductoId = productoId,
                             CompraId = id,
@@ -74,7 +73,7 @@ namespace Aplicacion.Compra
                 {
                     foreach(var id in request.ListaPronosticoDemanda)
                     {
-                        var productoPronosticoDemanda = new ProductoPronosticoDemanda()
+                        var productoPronosticoDemanda = new Dominio.ProductoPronosticoDemanda()
                         {
                             ProductoId = productoId,
                             PronosticoDemandaId = id,

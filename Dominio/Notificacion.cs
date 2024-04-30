@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dominio.Tablas
+namespace Dominio
 {
     public class Notificacion
     {
@@ -11,6 +11,6 @@ namespace Dominio.Tablas
         public PronosticoDemanda PronosticoDemanda { get; set; }
         public int SegundosNotificacion { get; set; }
         public DateTime FechaCreacion { get; set; }
-        
+
     }
 }

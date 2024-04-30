@@ -1,5 +1,5 @@
 ﻿using Aplicacion.ManejadorError;
-using Dominio.Tablas;
+
 using MediatR;
 using Persistencia;
 using System;
@@ -49,7 +49,7 @@ namespace Aplicacion.Compra
                         //AGREGAR
                         foreach(var id in request.ListaProducto)
                         {
-                            var nuevoProductoCompra = new ProductoCompra()
+                            var nuevoProductoCompra = new Dominio.ProductoCompra()
                             {
                                 CompraId = request.CompraId,
                                 ProductoId = id,

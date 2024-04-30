@@ -1,5 +1,4 @@
-﻿using Dominio.Tablas;
-using MediatR;
+﻿using MediatR;
 using Persistencia;
 using System;
 using System.Collections.Generic;
@@ -28,7 +27,7 @@ namespace Aplicacion.PronosticoDemanda
             public async Task<Unit> Handle(Ejecutar request, CancellationToken cancellationToken)
             {
                 Guid PronosticoDemandaId = Guid.NewGuid();
-                var PronosticoDemanda = new Dominio.Tablas.PronosticoDemanda()
+                var PronosticoDemanda = new Dominio.PronosticoDemanda()
                 {
                     PronosticoDemandaId = PronosticoDemandaId,
                     CantidadPronosticada = request.CantidadPronosticada,
@@ -40,7 +39,7 @@ namespace Aplicacion.PronosticoDemanda
                     
                     foreach(var producto  in request.Productos)
                     {
-                        var newProductoPronosticoDemanda = new ProductoPronosticoDemanda()
+                        var newProductoPronosticoDemanda = new Dominio.ProductoPronosticoDemanda()
                         {
                             ProductoId = producto,
                             PronosticoDemandaId = PronosticoDemandaId
