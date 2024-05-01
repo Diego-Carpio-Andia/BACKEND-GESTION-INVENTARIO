@@ -60,10 +60,10 @@ namespace Aplicacion.Venta
                             VentaId = _VentaId,
                             ProductoId = item
                         };
-                        //_entityContext.ProductoVenta.Add(ProductoVenta);
+                        _entityContext.ProductoVenta.Add(ProductoVenta);
                         //CAMBIAMOS LA CANTIDAD en producto restandole
-                        //var buscado = await _entityContext.Producto.FindAsync(item);
-                        //buscado.CantidadInventario -= request.Cantidad;
+                        var buscado = await _entityContext.Producto.FindAsync(item);
+                        buscado.CantidadInventario -= request.Cantidad;
                         
                     }
                 }

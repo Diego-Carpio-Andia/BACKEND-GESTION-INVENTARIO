@@ -32,7 +32,7 @@ namespace Aplicacion.Venta
                 var venta = await entityContext.Venta.FindAsync(request.VentaId);
                 if (venta == null)
                 {
-                    throw new ManejadorExepcion(HttpStatusCode.NotFound, new { mesaje = "No se encontro la compra" });
+                    throw new ManejadorExepcion(HttpStatusCode.NotFound, new { mesaje = "No se encontro la venta" });
                 }
                 venta.Cantidad = request.Cantidad;
                 venta.FechaCreacion = DateTime.UtcNow;

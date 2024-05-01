@@ -55,7 +55,8 @@ namespace Aplicacion.Seguridad
                 if(usuario_data == null)
                 {
                     //error de autenticacion
-                    throw new ManejadorExepcion(HttpStatusCode.Unauthorized);
+
+                    throw new ManejadorExepcion(HttpStatusCode.Unauthorized, new { message = "No existe el usuario" });
                 }
 
                 //si pasa hacemos la siguiente logica, request.Password => viene desde el cliente

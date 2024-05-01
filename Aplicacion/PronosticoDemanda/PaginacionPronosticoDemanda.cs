@@ -13,7 +13,7 @@ namespace Aplicacion.PronosticoDemanda
         public class Ejecuta : IRequest<PaginacionModel>
         {
             //filtrado por ahora solo por titulo
-            public int CantidadPronosticada { get; set; }
+            public string CantidadPronosticada { get; set; }
             //numero de pagina
             public int NumeroPagina { get; set; }
             //cantidad de elementos

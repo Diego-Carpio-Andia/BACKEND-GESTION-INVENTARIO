@@ -13,7 +13,6 @@ namespace Aplicacion.PronosticoDemanda
         public class Ejecutar : IRequest
         {
             public int CantidadPronosticada { get; set; }
-            public DateTime FechaCreacion { get; set; }
             public List<Guid> Productos { get; set; }
         }
         public class Manejador : IRequestHandler<Ejecutar>

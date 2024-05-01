@@ -1,5 +1,6 @@
 ﻿using Aplicacion.Seguridad;
 using Dominio;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace WebApi.Controllers
     [AllowAnonymous]
     public class UsuarioController : MiControllerBase
     {
+        
+
         // http://localhost:5000/api/Usuario/login        
         [HttpPost("login")]
         //este metodo debe de recibir parrametros importando la clase Login

@@ -26,6 +26,8 @@ using Persistencia.DapperConexion;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using Persistencia.DapperConexion.Paginacion;
+using Aplicacion.Actividad;
+using Persistencia.DapperConexion.Informes;
 
 namespace WebApi
 {
@@ -41,6 +43,8 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+           
+
 
             //Vamos a agregar el nuevo servicio para que me abstraiga data de la base de datos
             //opt => tipo de conexion que va atener
@@ -58,9 +62,40 @@ namespace WebApi
             services.Configure<ConexionConfiguracion>(Configuration.GetSection("ConnectionStrings"));
 
 
-            //añadimos el mediador del controller cursos para que
-            //Acepte los DTOs
-            //services.AddMediatR(typeof(Consulta.Manejador).Assembly);
+            //añadimos el mediador para los controllers
+            //es responsable de registrar los manejadores de MediatR en tu aplicación.
+            //Dado que Ejecutar implementa la interfaz IRequest, se puede usar como tipo genérico en MediatR para indicar qué tipo de solicitud se manejará con MediatR. Esto permite que MediatR construya y maneje la solicitud adecuadamente a través de su infraestructura de manejo de solicitudes
+            /*
+             Cuando agregas services.AddMediatR(typeof(AgregarActividad.Ejecutar).Assembly), 
+            estás configurando el contenedor de servicios de ASP.NET Core para registrar 
+            todos los manejadores de solicitudes (requests) MediatR que se encuentran 
+            en el ensamblado que contiene la clase AgregarActividad.Ejecutar.
+            Aquí está cómo funciona:
+
+            typeof(AgregarActividad.Ejecutar).Assembly: typeof(AgregarActividad.Ejecutar) 
+            devuelve el tipo de la clase Ejecutar dentro del espacio de nombres AgregarActividad.
+            Luego, Assembly obtiene el ensamblado (assembly) al que pertenece ese tipo, es decir,
+            el ensamblado que contiene la clase Ejecutar. Esto es importante porque MediatR 
+            necesita saber en qué ensamblado buscar los manejadores.
+            services.AddMediatR(...): Luego, al llamar a AddMediatR, 
+            estás configurando el contenedor de servicios para que MediatR 
+            escanee ese ensamblado y registre automáticamente todos los 
+            manejadores de solicitudes que encuentre. Esto significa que 
+            no necesitas registrar manualmente cada manejador en el contenedor 
+            de servicios; MediatR se encarga de eso por ti.
+            Entonces, al llamar a services.AddMediatR(typeof(AgregarActividad.Ejecutar).Assembly),
+            estás permitiendo que MediatR descubra y registre todos los manejadores de 
+            solicitudes definidos en el mismo ensamblado que AgregarActividad.Ejecutar. 
+            Esto simplifica mucho la configuración y el mantenimiento, especialmente en 
+            aplicaciones grandes donde hay muchos manejadores dispersos en varios ensamblados.
+             */
+
+            //Simplemente el tipo de clases que ejecutan : IRequest
+            services.AddMediatR(typeof(AgregarActividad.Ejecutar).Assembly);
+
+            
+            
+
 
             //vamos a agregar fluent validation .AddFluentValidation() ademas de indicar la clase en la cual clase se requiere validar
             services.AddControllers(opt => {
@@ -121,9 +156,11 @@ namespace WebApi
 
             //vamos a arrancar el IFactoryConnection para instancear la conexion a la base de datos 
             services.AddTransient<IFactoryConnection, FactoryConnection>();            
+            
             //instanceamos la paginacion
             services.AddScoped<IPaginacion, PaginacionRepository>();
-
+            //Instanceamos las interfaces
+            services.AddScoped<IRepositorioInformes, RepositorioInformes>();
 
             //swagger
             services.AddSwaggerGen(c =>
