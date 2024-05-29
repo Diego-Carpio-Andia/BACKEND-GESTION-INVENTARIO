@@ -10,5 +10,6 @@ namespace Persistencia.DapperConexion.Informes
         Task<IEnumerable<InformesCompraModel>> ObtenerInformesCompraPorCantidad(int cantidad);
         Task<IEnumerable<InformesVentaModel>> ObtenerInformesVentaPorCantidad(int cantidad);
         Task<IEnumerable<InformesTendenciaModel>> ObtenerInformesTendenciaPorCantidad(int cantidad);
+        Task<IEnumerable<InformesTotales>> ObtenerInformesTotalesCantidad();
     }
 }

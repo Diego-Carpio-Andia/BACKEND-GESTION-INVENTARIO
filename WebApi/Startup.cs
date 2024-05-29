@@ -43,8 +43,13 @@ namespace WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-           
 
+            //CORS para que cualquier cliente pueda consumir nuestra api
+            services.AddCors(options => options.AddPolicy("CorsApp", builder =>{
+                builder.AllowAnyOrigin();
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            }));
 
             //Vamos a agregar el nuevo servicio para que me abstraiga data de la base de datos
             //opt => tipo de conexion que va atener
@@ -189,6 +194,8 @@ namespace WebApi
             //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("CorsApp");
 
             app.UseAuthorization();
 

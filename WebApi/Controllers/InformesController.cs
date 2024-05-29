@@ -22,6 +22,12 @@ namespace WebApi.Controllers
         {
             return await Mediator.Send(data);
         }
+        [HttpGet("InformeTotal")]
+        public async Task<ActionResult<List<InformesTotales>>> ObtenerInformeTotal()
+        {
+            //SIN PARAMETROS  
+            return await Mediator.Send(new InformeTotal.Ejecutar());
+        }
     }
 }
 

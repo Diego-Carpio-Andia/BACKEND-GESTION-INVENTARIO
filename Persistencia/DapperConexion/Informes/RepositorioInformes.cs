@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -57,6 +58,27 @@ namespace Persistencia.DapperConexion.Informes
             catch (Exception ex)
             {
                 throw new Exception("no se pudo Obtener el Informe de Compras", ex);
+            }
+        }
+
+        public async Task<IEnumerable<InformesTotales>> ObtenerInformesTotalesCantidad()
+        {
+            var storeProcedure = "usp_obtener_totales";
+            IEnumerable<InformesTotales> informesTotales = null;
+            try
+            {
+                //Abrimos conexion
+                var connection = _factoryConnection.GetConnection();
+                //Ejecutamos el query
+                informesTotales = await connection.QueryAsync<InformesTotales>(storeProcedure,
+                    commandType: CommandType.StoredProcedure
+                    );
+                _factoryConnection.CloseConnection();
+                return informesTotales;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("no se pudo Obtener el Informe Total", ex);
             }
         }
 

@@ -13,7 +13,7 @@ namespace Aplicacion.Favoritos
         public class Ejecuta : IRequest<PaginacionModel>
         {
             //filtrado por ahora solo por FechaCreacion
-            public DateTime FechaCreacion { get; set; }
+            public string FechaCreacion { get; set; }
             //numero de pagina
             public int NumeroPagina { get; set; }
             //cantidad de elementos

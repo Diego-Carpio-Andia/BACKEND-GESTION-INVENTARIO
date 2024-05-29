@@ -14,6 +14,7 @@ namespace Persistencia.DapperConexion.Informes
         public string Categoria { get; set; }
         public int Cantidad {  get; set; }
         [Column(TypeName = "decimal(18,4)")]
+        public DateTime FechaCreacion { get; set; }
         public decimal TOTALCOMPRADO { get; set; }
 
     }
