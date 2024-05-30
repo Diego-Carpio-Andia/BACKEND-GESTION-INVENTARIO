@@ -64,7 +64,7 @@ namespace Aplicacion.Seguridad
 
                 var usuario = new Usuario
                 {
-                    NombreCompleto = request.Nombre + " " + request.Apellidos,
+                    NombreCompleto = request.Nombre.ToString() + " " + request.Apellidos,
                     Email = request.Email,
                     UserName = request.Username,    
                 };
