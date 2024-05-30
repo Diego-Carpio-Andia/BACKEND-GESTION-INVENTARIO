@@ -1,5 +1,8 @@
-﻿using iTextSharp.text.xml.simpleparser;
+﻿using Aplicacion.Interfaces;
+using Dominio;
+using iTextSharp.text.xml.simpleparser;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Persistencia;
 using System;
 using System.Collections.Generic;
@@ -25,19 +28,30 @@ namespace Aplicacion.Compra
         public class Manejador : IRequestHandler<Ejecuta>
         {
             private readonly EntityContext entityContext;
-            public Manejador(EntityContext entityContext)
+            UserManager<Usuario> _userManager;
+            IJWTGenerador _jwtGenerador;
+            IUsuarioSesion _usuarioSesion;
+            public Manejador(EntityContext _entityContext, UserManager<Usuario> userManager, IJWTGenerador jWTGenerador, IUsuarioSesion usuarioSesion)
             {
-                this.entityContext = entityContext;
+                entityContext = _entityContext;
+                _userManager = userManager;
+                _jwtGenerador = jWTGenerador;
+                _usuarioSesion = usuarioSesion;
             }
 
             public async Task<Unit> Handle(Ejecuta request, CancellationToken cancellationToken)
             {
+                //buscamos un usuario en la base de datos con ese username
+                var usuario = await _userManager.FindByNameAsync(_usuarioSesion.ObtenerUsuarioSesion()) ?? throw new Exception("El usuario no se encontró en la base de datos.");
+
+
                 Guid productoId = Guid.NewGuid();
                 var producto = new Dominio.Producto()
                 {
                     Productoid = productoId,
                     Nombre = request.Nombre,
                     Precio = request.Precio,
+                    Usuario = usuario,
                     Categoria = request.Categoria,
                     CantidadInventario = request.Cantidad,
                     FechaCreacion = DateTime.UtcNow

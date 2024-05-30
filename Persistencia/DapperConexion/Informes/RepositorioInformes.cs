@@ -16,7 +16,7 @@ namespace Persistencia.DapperConexion.Informes
             _factoryConnection = factoryConnection;
         }
 
-        public async Task<IEnumerable<InformesCompraModel>> ObtenerInformesCompraPorCantidad(int cantidad)
+        public async Task<IEnumerable<InformesCompraModel>> ObtenerInformesCompraPorCantidad(string usuarioId)
         {
             var storeProcedure = "usp_obtener_cantidad_compra";
             IEnumerable<InformesCompraModel> informesCompraModel = null;
@@ -26,7 +26,7 @@ namespace Persistencia.DapperConexion.Informes
                 var connection = _factoryConnection.GetConnection();
                 //Ejecutamos el query
                 informesCompraModel = await connection.QueryAsync<InformesCompraModel>(storeProcedure,
-                    new { Cantidad = cantidad },
+                    new { UsuarioId = usuarioId },
                     commandType: CommandType.StoredProcedure
                 );
 
@@ -39,7 +39,7 @@ namespace Persistencia.DapperConexion.Informes
             }
         }
 
-        public async Task<IEnumerable<InformesTendenciaModel>> ObtenerInformesTendenciaPorCantidad(int cantidad)
+        public async Task<IEnumerable<InformesTendenciaModel>> ObtenerInformesTendenciaPorCantidad(string usuarioId)
         {
             var storeProcedure = "usp_obtener_cantidad_tendencia";
             IEnumerable<InformesTendenciaModel> informesTendenciaModel = null;
@@ -49,7 +49,7 @@ namespace Persistencia.DapperConexion.Informes
                 var connection = _factoryConnection.GetConnection();
                 //Ejecutamos el query
                 informesTendenciaModel = await connection.QueryAsync<InformesTendenciaModel>(storeProcedure,
-                    new { Cantidad = cantidad},
+                    new { UsuarioId = usuarioId },
                     commandType: CommandType.StoredProcedure
                     );
                 _factoryConnection.CloseConnection();
@@ -61,7 +61,7 @@ namespace Persistencia.DapperConexion.Informes
             }
         }
 
-        public async Task<IEnumerable<InformesTotales>> ObtenerInformesTotalesCantidad()
+        public async Task<IEnumerable<InformesTotales>> ObtenerInformesTotalesCantidad(string usuarioId)
         {
             var storeProcedure = "usp_obtener_totales";
             IEnumerable<InformesTotales> informesTotales = null;
@@ -71,6 +71,7 @@ namespace Persistencia.DapperConexion.Informes
                 var connection = _factoryConnection.GetConnection();
                 //Ejecutamos el query
                 informesTotales = await connection.QueryAsync<InformesTotales>(storeProcedure,
+                    new { UsuarioId = usuarioId },
                     commandType: CommandType.StoredProcedure
                     );
                 _factoryConnection.CloseConnection();
@@ -82,7 +83,7 @@ namespace Persistencia.DapperConexion.Informes
             }
         }
 
-        public async Task<IEnumerable<InformesVentaModel>> ObtenerInformesVentaPorCantidad(int cantidad)
+        public async Task<IEnumerable<InformesVentaModel>> ObtenerInformesVentaPorCantidad(string usuarioId)
         {
             var storeProcedure = "usp_obtener_cantidad_venta";
             IEnumerable<InformesVentaModel> informesVentaModel = null;
@@ -92,7 +93,7 @@ namespace Persistencia.DapperConexion.Informes
                 var connection = _factoryConnection.GetConnection();
                 //Ejecutamos el query
                 informesVentaModel = await connection.QueryAsync<InformesVentaModel>(storeProcedure,
-                    new { Cantidad = cantidad },
+                    new { UsuarioId = usuarioId },
                     commandType: CommandType.StoredProcedure
                 );
                 _factoryConnection.CloseConnection();

@@ -20,5 +20,8 @@ namespace Dominio
         public ICollection<ProductoVenta> VentaLink { get; set; }
         public ICollection<ProductoPronosticoDemanda> PronosticoDemandaLink { get; set; }
         public Favoritos Favoritos { get; set; }
+        //como la clase usuario HEREDA de entityUser entonces 
+        //automaticamente se hace la union de uno a muchos 
+        public Usuario Usuario { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace Aplicacion.Seguridad
         public string Email { get; set; }
         public string Username { get; set; }
         public string Imagen { get; set; }
+        public string UsuarioId { get; set; }   
         public ImagenGeneral general { get; set; }
                     
     }

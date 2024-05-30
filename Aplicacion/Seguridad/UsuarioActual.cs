@@ -59,6 +59,7 @@ namespace Aplicacion.Seguridad
                         Token = _jwtGenerador.CrearToken(usuario, listaRoles.ToList()),
                         Email = usuario.Email,
                         general = imagenCliente,
+                        UsuarioId = usuario.Id,
 
                     };
                 }
@@ -70,6 +71,7 @@ namespace Aplicacion.Seguridad
                         Username = usuario.UserName,
                         Token = _jwtGenerador.CrearToken(usuario, listaRoles.ToList()),
                         Email = usuario.Email,
+                        UsuarioId = usuario.Id,
                     };
                 }
 
