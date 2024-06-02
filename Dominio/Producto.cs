@@ -23,5 +23,7 @@ namespace Dominio
         //como la clase usuario HEREDA de entityUser entonces 
         //automaticamente se hace la union de uno a muchos 
         public Usuario Usuario { get; set; }
+        public Guid ProveedorId {  get; set; }
+        public Proveedor Proveedor { get; set; }
     }
 }

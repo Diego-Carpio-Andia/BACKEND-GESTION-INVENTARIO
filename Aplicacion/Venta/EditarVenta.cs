@@ -16,6 +16,7 @@ namespace Aplicacion.Venta
         public class Ejecutar : IRequest
         {
             public int Cantidad { get; set; }
+            public string MetodoPago { get; set; }
             public Guid VentaId { get; set; }
             public List<Guid> ListaProducto { get; set; }
         }
@@ -35,6 +36,7 @@ namespace Aplicacion.Venta
                     throw new ManejadorExepcion(HttpStatusCode.NotFound, new { mesaje = "No se encontro la venta" });
                 }
                 venta.Cantidad = request.Cantidad;
+                venta.MetodoPago = request.MetodoPago;
                 venta.FechaCreacion = DateTime.UtcNow;
                 if (request.ListaProducto != null)
                 {

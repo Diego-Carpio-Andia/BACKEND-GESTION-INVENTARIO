@@ -17,8 +17,10 @@ namespace Aplicacion.Producto
             public Guid id { get; set; }
             public string Nombre { get; set; }
             public decimal Precio { get; set; }
+            public string Imagen { get; set; }
             public string Categoria { get; set; }
             public int CantidadInventario {  get; set; }
+            public Guid ProveedorId { get; set; }   
             public ICollection<Guid> ListaVenta { get; set; }
             public ICollection<Guid> ListaCompra { get; set; }
             public ICollection<Guid> ListaPronosticoDemanda { get; set; }
@@ -43,9 +45,15 @@ namespace Aplicacion.Producto
                 ProductoEncontrado.Nombre = request.Nombre;
                 ProductoEncontrado.Precio = request.Precio;
                 ProductoEncontrado.Categoria = request.Categoria;
+                ProductoEncontrado.ProveedorId = request.ProveedorId;
                 ProductoEncontrado.CantidadInventario = request.CantidadInventario;
+                // Verificar si se proporciona una nueva imagen
+                if (!string.IsNullOrEmpty(request.Imagen))
+                {
+                    ProductoEncontrado.Imagen = Convert.FromBase64String(request.Imagen);
+                }
 
-                if(request.ListaVenta !=null)
+                if (request.ListaVenta !=null)
                 {
                     if (request.ListaVenta.Count > 0) {
                         //ELIMINAR

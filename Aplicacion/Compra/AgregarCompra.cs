@@ -17,6 +17,7 @@ namespace Aplicacion.Compra
         public class Ejecuta : IRequest
         {
             public int Cantidad { get; set; }
+            public string MetodoPago { get;set; }
             public List<Guid> ListaProducto { get; set; }
         }
         public class Manejador : IRequestHandler<Ejecuta>
@@ -43,6 +44,7 @@ namespace Aplicacion.Compra
                 {
                     CompraId = _CompraId,
                     Cantidad = request.Cantidad,
+                    MetodoPago = request.MetodoPago,
                     Usuario = usuario,
                     FechaCreacion = DateTime.UtcNow
                 };

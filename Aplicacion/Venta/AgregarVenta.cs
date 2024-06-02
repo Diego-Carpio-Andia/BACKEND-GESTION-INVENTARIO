@@ -17,6 +17,7 @@ namespace Aplicacion.Venta
         public class Ejecuta : IRequest
         {
             public int Cantidad {  get; set; }
+            public string MetodoPago { get; set; }
             //public Guid UsuarioId {  get; set; }
             public List<Guid> ListaProducto { get; set; }
         }
@@ -46,6 +47,7 @@ namespace Aplicacion.Venta
                     VentaId = _VentaId,
                     Cantidad = request.Cantidad,
                     Usuario = usuario,
+                    MetodoPago = request.MetodoPago,
                     //UsuarioId = request.UsuarioId,
                     FechaCreacion = DateTime.UtcNow
                 };

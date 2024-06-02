@@ -9,6 +9,7 @@ namespace Dominio
     {
         public Guid VentaId { get; set; }
         public int Cantidad { get; set; }
+        public string MetodoPago { get; set; }
         //como la clase usuario HEREDA de entityUser entonces 
         //automaticamente se hace la union de uno a muchos 
         public Usuario Usuario { get; set; }

@@ -19,7 +19,9 @@ namespace Aplicacion.Compra
             public string Nombre { get; set; }
             public decimal Precio { get; set; }
             public string Categoria { get; set; }
-            public int Cantidad { get; set; }
+            public int CantidadInventario { get; set; }
+            public string Imagen {  get; set; }
+            public Guid ProveedorId { get; set; }
             public ICollection<Guid> ListaVenta { get; set; }
             public ICollection<Guid> ListaCompra {  get; set; }
             public ICollection<Guid> ListaPronosticoDemanda { get; set; }
@@ -45,7 +47,7 @@ namespace Aplicacion.Compra
                 var usuario = await _userManager.FindByNameAsync(_usuarioSesion.ObtenerUsuarioSesion()) ?? throw new Exception("El usuario no se encontró en la base de datos.");
 
 
-                Guid productoId = Guid.NewGuid();
+                Guid productoId = Guid.NewGuid();               
                 var producto = new Dominio.Producto()
                 {
                     Productoid = productoId,
@@ -53,10 +55,14 @@ namespace Aplicacion.Compra
                     Precio = request.Precio,
                     Usuario = usuario,
                     Categoria = request.Categoria,
-                    CantidadInventario = request.Cantidad,
+                    ProveedorId = request.ProveedorId,
+                    CantidadInventario = request.CantidadInventario,
                     FechaCreacion = DateTime.UtcNow
                 };
-
+                if (!string.IsNullOrEmpty(request.Imagen))
+                {
+                    producto.Imagen = Convert.FromBase64String(request.Imagen);
+                }
                 //Agregamos el nuevo producto
                 entityContext.Producto.Add(producto);
                 if (request.ListaVenta != null)

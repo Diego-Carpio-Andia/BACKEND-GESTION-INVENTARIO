@@ -17,6 +17,7 @@ namespace Aplicacion.Compra
         public class Ejecutar : IRequest
         {
             public Guid CompraId { get; set; }
+            public string MetodoPago { get; set; }
             public int Cantidad { get; set; }
             public List<Guid> ListaProducto { get; set; }
         }
@@ -36,6 +37,7 @@ namespace Aplicacion.Compra
                 }
                 compra.Cantidad = request.Cantidad;
                 compra.FechaCreacion = DateTime.UtcNow;
+                compra.MetodoPago = request.MetodoPago;
                 if(request.ListaProducto != null)
                 {
                     if(request.ListaProducto.Count > 0)
