@@ -48,7 +48,7 @@ namespace Aplicacion.Venta
 
                 var storeProcedure = "usp_obtener_venta_paginacion";
                 //Ordenamiento asc o desc por titulo
-                var ordenamientoColumna = "Cantidad";
+                var ordenamientoColumna = "FechaCreacion";
                 //Agregamos por ahora 1 filtro clave - valor
                 var parametrosFiltro = new Dictionary<string, object>
                 {

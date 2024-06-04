@@ -12,6 +12,10 @@ namespace Dominio
         [Column(TypeName = "decimal(18,4)")]
         public decimal Precio { get; set; }
         public string Categoria { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal PrecioProveedor { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal DolarActual { get; set; }
         public int CantidadInventario { get; set; }
         public byte[] Imagen { get; set; }
         public DateTime FechaCreacion { get; set; }

@@ -2,6 +2,7 @@
 using Dominio;
 using iTextSharp.text.xml.simpleparser;
 using MediatR;
+using Microsoft.AspNetCore.Connections.Features;
 using Microsoft.AspNetCore.Identity;
 using Persistencia;
 using System;
@@ -21,6 +22,8 @@ namespace Aplicacion.Compra
             public string Categoria { get; set; }
             public int CantidadInventario { get; set; }
             public string Imagen {  get; set; }
+            public decimal PrecioProveedor { get; set; }
+            public decimal DolarActual { get; set; }
             public Guid ProveedorId { get; set; }
             public ICollection<Guid> ListaVenta { get; set; }
             public ICollection<Guid> ListaCompra {  get; set; }
@@ -62,6 +65,14 @@ namespace Aplicacion.Compra
                 if (!string.IsNullOrEmpty(request.Imagen))
                 {
                     producto.Imagen = Convert.FromBase64String(request.Imagen);
+                }
+                if (request.PrecioProveedor > 0)
+                {
+                    producto.PrecioProveedor = request.PrecioProveedor;
+                }
+                if(request.DolarActual > 0)
+                {
+                    producto.DolarActual = request.DolarActual;
                 }
                 //Agregamos el nuevo producto
                 entityContext.Producto.Add(producto);

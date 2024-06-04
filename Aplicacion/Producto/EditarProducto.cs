@@ -1,4 +1,5 @@
 ﻿using Aplicacion.ManejadorError;
+using Dominio;
 using MediatR;
 using Persistencia;
 using System;
@@ -20,6 +21,8 @@ namespace Aplicacion.Producto
             public string Imagen { get; set; }
             public string Categoria { get; set; }
             public int CantidadInventario {  get; set; }
+            public decimal PrecioProveedor { get; set; }
+            public decimal DolarActual { get; set; }
             public Guid ProveedorId { get; set; }   
             public ICollection<Guid> ListaVenta { get; set; }
             public ICollection<Guid> ListaCompra { get; set; }
@@ -51,6 +54,15 @@ namespace Aplicacion.Producto
                 if (!string.IsNullOrEmpty(request.Imagen))
                 {
                     ProductoEncontrado.Imagen = Convert.FromBase64String(request.Imagen);
+                }
+
+                if (request.PrecioProveedor > 0)
+                {
+                    ProductoEncontrado.PrecioProveedor = request.PrecioProveedor;
+                }
+                if (request.DolarActual > 0)
+                {
+                    ProductoEncontrado.DolarActual = request.DolarActual;
                 }
 
                 if (request.ListaVenta !=null)
