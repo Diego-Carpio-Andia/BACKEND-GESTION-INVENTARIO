@@ -20,6 +20,7 @@ namespace Aplicacion.Producto
             public decimal Precio { get; set; }
             public string Imagen { get; set; }
             public string Categoria { get; set; }
+            public string Frecuencia { get; set; }  
             public int CantidadInventario {  get; set; }
             public decimal PrecioProveedor { get; set; }
             public decimal DolarActual { get; set; }
@@ -54,6 +55,11 @@ namespace Aplicacion.Producto
                 if (!string.IsNullOrEmpty(request.Imagen))
                 {
                     ProductoEncontrado.Imagen = Convert.FromBase64String(request.Imagen);
+                }
+
+                if (!string.IsNullOrEmpty(request.Frecuencia))
+                {
+                    ProductoEncontrado.Frecuencia = request.Frecuencia;
                 }
 
                 if (request.PrecioProveedor > 0)

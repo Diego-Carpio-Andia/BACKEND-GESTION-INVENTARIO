@@ -22,6 +22,7 @@ namespace Aplicacion.Compra
             public string Categoria { get; set; }
             public int CantidadInventario { get; set; }
             public string Imagen {  get; set; }
+            public string Frecuencia { get; set; }
             public decimal PrecioProveedor { get; set; }
             public decimal DolarActual { get; set; }
             public Guid ProveedorId { get; set; }
@@ -66,6 +67,12 @@ namespace Aplicacion.Compra
                 {
                     producto.Imagen = Convert.FromBase64String(request.Imagen);
                 }
+                if (!string.IsNullOrEmpty(request.Frecuencia))
+                {
+                    producto.Frecuencia = request.Frecuencia;
+                }
+
+
                 if (request.PrecioProveedor > 0)
                 {
                     producto.PrecioProveedor = request.PrecioProveedor;
